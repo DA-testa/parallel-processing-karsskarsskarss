@@ -1,16 +1,23 @@
 # python3
 #arturs janis karss 211rec029
-def parallel_processing(n: int, m:int, data: list) -> list:
+def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
-    threads =[(i,0) for i in range (n)]
-    t = data[i]
-    thread = min(threads, key=lambda x: x[1])
-    output.append((thread[0], thread[1]))
-    threads[threads.index(thread)] = (thread[0], thread[1] + t)
+    skaits = 0
+    for i in range (n):
+        output.append((i, data[skaits]))
+        skaits += 1
+    next = get_main(output)
+    print(next)
+    
     return output
-
+def get_main(line):
+    small = 10000
+    for (key, value) in line:
+        if value < small:
+            small = value
+    return value
 def main() -> None:
     # TODO: create input from keyboard
     # input consists of two lines
